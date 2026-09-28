@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Starlight Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+
+
+</head>
+
+<body class="admin-body">
+
+    <div class="admin-layout">
+
+        <!-- Left Sidebar Navigation -->
+        <aside class="admin-sidebar">
+
+            <div class="sidebar-top">
+
+                <div class="sidebar-header">
+
+                    <a href="admin_Dashboard.html" class="admin-brand">
+                        STARLIGHT <span>✦ ADMIN</span>
+                    </a>
+
+                </div>
+
+
+                <nav class="sidebar-nav">
+
+                    <a href="index.html" class="sidebar-link sidebar-storefront-link" title="Open Storefront">
+                        Storefront
+                    </a>
+
+
+                    <div class="sidebar-nav-divider"></div>
+
+
+                    <a href="admin_Dashboard.html" class="sidebar-link" active>
+                        Dashboard
+                    </a>
+
+                    <a href="admin_ProductPage.html" class="sidebar-link">
+                        Products
+                    </a>
+
+                    <a href="admin_UsersPage.html" class="sidebar-link">
+                        Users
+                    </a>
+
+                    <a href="admin_OrdersPage.html" class="sidebar-link">
+                        Orders
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Sidebar Bottom: User Profile & Logout -->
+            <div class="sidebar-footer">
+
+                <div class="sidebar-user-box">
+
+                    <div class="user-profile-row">
+
+                        <div class="user-avatar">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </div>
+
+                        <div class="user-details">
+
+                            <span class="user-email-text" id="adminEmail">
+                                Loading...
+                            </span>
+
+                            <span class="user-badge">
+                                ✦ Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="#" class="sidebar-logout-btn" title="Sign out of Admin Portal" onclick="logoutUser()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </a>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Right Main Viewport -->
+        <main class="admin-main">
+
+
+            <!-- Page Title Area -->
+            <div class="admin-title-area">
+
+                <h1>Admin Dashboard</h1>
+
+                <p>
+                    Platform overview and quick shortcuts to all management modules.
+                </p>
+
+            </div>
+
+
+            <!-- 4-Card KPI Strip -->
+            <div class="stats-grid">
+
+
+                <!-- Total Products -->
+                <div class="admin-card stat-card">
+
+                    <span class="stat-label">
+                        Total Products
+                    </span>
+
+                    <div class="stat-value">
+
+                        <span id="totalProducts">
+                            0
+                        </span>
+
+                        <span class="stat-unit">
+                            Pieces
+                        </span>
+
+                    </div>
+
+                    <span class="stat-subtext">
+
+                        Across
+                        <span id="totalCategories">
+                            0
+                        </span>
+                        Categories
+
+                    </span>
+
+                </div>
+
+
+                <!-- Low Stock -->
+                <div class="admin-card stat-card">
+
+                    <span class="stat-label">
+                        Low Stock Items
+                    </span>
+
+                    <div class="stat-value">
+
+                        <span id="lowStockProducts">
+                            0
+                        </span>
+
+                        <span class="stat-unit">
+                            Products
+                        </span>
+
+                    </div>
+
+                    <span class="stat-subtext">
+                        Stock &le; 2 left
+                    </span>
+
+                </div>
+
+
+                <!-- Registered Users -->
+                <div class="admin-card stat-card">
+
+                    <span class="stat-label">
+                        Registered Users
+                    </span>
+
+                    <div class="stat-value">
+
+                        <span id="totalUsers">
+                            0
+                        </span>
+
+                        <span class="stat-unit">
+                            Accounts
+                        </span>
+
+                    </div>
+
+                    <span class="stat-subtext">
+
+                        <span id="totalAdmins">
+                            0
+                        </span>
+                        Admins
+
+                        &bull;
+
+                        <span id="totalCustomers">
+                            0
+                        </span>
+                        Customers
+
+                    </span>
+
+                </div>
+
+
+                <!-- Total Orders -->
+                <div class="admin-card stat-card">
+
+                    <span class="stat-label">
+                        Total Orders
+                    </span>
+
+                    <div class="stat-value">
+
+                        <span id="totalOrders">
+                            0
+                        </span>
+
+                        <span class="stat-unit">
+                            Bills
+                        </span>
+
+                    </div>
+
+                    <span class="stat-subtext">
+
+                        &#8377;
+                        <span id="totalRevenue">
+                            0
+                        </span>
+                        Gross
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3-Tile Launchpad Grid -->
+            <div class="dashboard-grid">
+
+
+                <!-- 01: Catalog & Inventory -->
+                <div class="admin-card launch-card">
+
+                    <div class="launch-content">
+
+                        <span class="launch-tag">
+                            ✦ 01
+                        </span>
+
+                        <h2>
+                            Catalog & Inventory
+                        </h2>
+
+                        <p>
+                            Add new jewelry pieces, update stock and pricing,
+                            and delete items.
+                        </p>
+
+                    </div>
+
+
+                    <div class="launch-action">
+
+                        <a href="admin_ProductPage.html" class="admin-btn btn-primary launch-btn">
+
+                            Open Products Page
+
+                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 02: Accounts & Access -->
+                <div class="admin-card launch-card">
+
+                    <div class="launch-content">
+
+                        <span class="launch-tag">
+                            ✦ 02
+                        </span>
+
+                        <h2>
+                            Accounts & Access
+                        </h2>
+
+                        <p>
+                            View admin and customer accounts,
+                            create new logins, and delete users.
+                        </p>
+
+                    </div>
+
+
+                    <div class="launch-action">
+
+                        <a href="admin_UsersPage.html" class="admin-btn btn-primary launch-btn">
+
+                            Visit Accounts Data
+
+                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 03: Orders & Billing -->
+                <div class="admin-card launch-card">
+
+                    <div class="launch-content">
+
+                        <span class="launch-tag">
+                            ✦ 03
+                        </span>
+
+                        <h2>
+                            Orders & Billing
+                        </h2>
+
+                        <p>
+                            View customer orders, check bill details,
+                            and track purchase records.
+                        </p>
+
+                    </div>
+
+
+                    <div class="launch-action">
+
+                        <a href="admin_OrdersPage.html" class="admin-btn btn-primary launch-btn">
+
+                            View Invoices & Bills
+
+                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+<!-- Scripts -->
+<script src="js/jquery-3.6.0.js"></script>
+<script src="js/admin_Dashboard.js"></script>
+
+</html>

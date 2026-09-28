@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/infopgs.css">
+
+    <script src="js/jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+    <main class="contact-page">
+
+        <article>
+
+            <h1>Get in Touch</h1>
+
+            <p>
+                For private appointments, or assistance
+                write to us below or reach our showroom directly.
+            </p>
+
+            <div class="direct-reach">
+
+                <a href="mailto:starlightjewels@gmail.com">
+                    starlightjewels@gmail.com
+                </a>
+
+                <span class="dot">•</span>
+
+                <span>+91 123 45 67 890</span>
+
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Message sent.'); this.reset();">
+
+                <input type="text" id="name" required placeholder="Full Name">
+
+                <input type="email" id="email" required placeholder="Email Address">
+
+                <textarea id="message" rows="3" required placeholder="How may we assist you?"></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </article>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="js/fetchNavAndFooter.js"></script>
+
+</body>
+
+</html>

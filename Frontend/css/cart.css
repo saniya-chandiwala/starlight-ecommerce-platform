@@ -1,0 +1,351 @@
+/* Page & Layout */
+.cart-page {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 0 24px;
+}
+
+#cartHeader {
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d3cbbe;
+}
+
+#cartHeader h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0;
+}
+
+#cartLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+#cartItemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Product Card */
+.cart-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #d3cbbe;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.cart-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.cart-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+
+.cart-desc {
+  font-size: 13px;
+  color: #33302c;
+  line-height: 1.4;
+  margin: 0 0 24px;
+}
+
+/* Actions & Quantity Controls */
+.cart-actions {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.qty-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qty-pill {
+  display: inline-flex;
+  border: 1px solid #d3cbbe;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.qty-pill button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #1a1918;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.qty-pill button:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.qty-pill button:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.qty-pill button:hover:not(:disabled) {
+  background: #f5f1ec;
+}
+
+/* Disabled + / - buttons when stock limits are hit */
+.qty-pill button:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #8c827a;
+}
+
+.qty-pill span {
+  min-width: 32px;
+  padding: 0 4px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 38px;
+}
+
+/* Stock limit notification under pill */
+.stock-limit-note {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #a08052;
+  line-height: 1.2;
+}
+
+/* Corner Cross Remove Button */
+.remove-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  color: #8c827a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.remove-btn:hover {
+  color: #dc2626;
+}
+
+.cart-price {
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Sold Out Item in Cart */
+.cart-card.item-sold-out {
+  background-color: #faf8f5;
+  border-color: #e2ddd5;
+}
+
+.cart-card.item-sold-out img {
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
+
+.cart-card.item-sold-out .cart-title,
+.cart-card.item-sold-out .cart-desc {
+  color: #8c827a;
+}
+
+.cart-card.item-sold-out .cart-price {
+  color: #8c827a;
+}
+
+/* Order Summary & Empty State */
+#cartSummary,
+#emptyCart {
+  background: #ffffff;
+  border: 1px solid #d3cbbe;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+#cartSummary {
+  padding: 32px 28px;
+}
+
+#cartSummary h2 {
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d3cbbe;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #33302c;
+}
+
+.total-line {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #d3cbbe;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1918;
+}
+
+#checkoutButton {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px 32px;
+  border: 1px solid #1a1918;
+  background: #1a1918;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#checkoutButton:hover {
+  background: #a08052;
+  border-color: #a08052;
+}
+
+#emptyCart {
+  width: 100%;
+  max-width: 540px;
+  margin: auto;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+#emptyCart p {
+  margin-bottom: 20px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+}
+
+#emptyCart a {
+  padding-bottom: 4px;
+  border-bottom: 2px solid #a08052;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #1a1918;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#emptyCart a:hover {
+  color: #a08052;
+}
+
+.cart-stock-warning {
+    margin: 8px 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a33a3a;
+}
+
+/* Tablet */
+@media (max-width: 1032px) {
+  #cartLayout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cart-card {
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .cart-card img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .cart-page {
+    padding: 0 16px;
+    margin: 20px auto;
+  }
+
+  #cartHeader {
+    margin-bottom: 24px;
+  }
+
+  #cartHeader h1 {
+    font-size: 30px;
+  }
+
+  .cart-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 16px;
+  }
+
+  .cart-card img {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+  }
+
+  .cart-desc {
+    margin-bottom: 16px;
+  }
+
+  .cart-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cart-price {
+    width: 100%;
+    margin-top: 8px;
+    text-align: right;
+  }
+
+  #cartSummary {
+    padding: 24px 20px;
+  }
+}

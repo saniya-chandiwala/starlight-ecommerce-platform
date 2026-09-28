@@ -1,0 +1,132 @@
+/* Page */
+.login-page,
+.signup-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 48px 24px;
+}
+
+.login-page article,
+.signup-page article {
+  width: 100%;
+  max-width: 560px;
+  padding: 56px 45px;
+  background-color: #ffffff;
+  border: 1px solid #d3cbbe;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Headings */
+.login-page h1,
+.signup-page h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Controls */
+.login-page form,
+.signup-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.login-page input,
+.signup-page input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #d3cbbe;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #1a1918;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-page input::placeholder,
+.signup-page input::placeholder {
+  color: #6b635b;
+}
+
+.login-page input:focus,
+.signup-page input:focus {
+  border-color: #a08052;
+  box-shadow: 0 0 0 1px #a08052;
+}
+
+/* Password Toggle Icon */
+.password-box {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-box input {
+  padding-right: 45px;
+}
+
+/* hide default browser password eye icon */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+.password-box i {
+  position: absolute;
+  right: 15px;
+  color: #6b635b;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.password-box i:hover {
+  color: #a08052;
+}
+
+/* Submit Button */
+.login-page button,
+.signup-page button {
+  width: 100%;
+  padding: 15px 32px;
+  background-color: #1a1918;
+  color: #ffffff;
+  border: 1px solid #1a1918;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.login-page button:hover,
+.signup-page button:hover {
+  background-color: #a08052;
+  border-color: #a08052;
+}
+
+/* Account Link */
+.account-link {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #33302c;
+}
+
+.account-link a {
+  color: #1a1918;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.account-link a:hover {
+  color: #a08052;
+}

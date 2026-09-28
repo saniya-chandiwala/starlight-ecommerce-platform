@@ -1,0 +1,153 @@
+/* Page */
+.about-page,
+.contact-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 48px 24px;
+}
+
+/* Article */
+.about-page article,
+.contact-page article {
+  width: 100%;
+  max-width: 560px;
+  padding: 42px 45px 50px;
+  background-color: #ffffff;
+  border: 1px solid #d3cbbe;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Headings & Text */
+.about-page h1,
+.contact-page h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.about-page article p,
+.contact-page article p {
+  font-size: 15px;
+  color: #33302c;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.about-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Link */
+.direct-reach {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #33302c;
+  margin: 28px 0;
+  padding: 22px 0;
+  border-top: 1px solid #d3cbbe;
+  border-bottom: 1px solid #d3cbbe;
+}
+
+.direct-reach a {
+  color: #1a1918;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.direct-reach a:hover,
+.collection-link:hover {
+  color: #a08052;
+}
+
+.direct-reach .dot {
+  color: #a08052;
+}
+
+.collection-link {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #1a1918;
+  text-decoration: none;
+  border-bottom: 2px solid #a08052;
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.collection-link:hover {
+  border-color: #1a1918;
+}
+
+/* Contact Form */
+.contact-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.contact-page input,
+.contact-page textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #d3cbbe;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #1a1918;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-page textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.contact-page input::placeholder,
+.contact-page textarea::placeholder {
+  color: #6b635b;
+}
+
+.contact-page input:focus,
+.contact-page textarea:focus {
+  border-color: #a08052;
+  box-shadow: 0 0 0 1px #a08052;
+}
+
+.contact-page button {
+  width: 100%;
+  padding: 15px 32px;
+  background-color: #1a1918;
+  color: #ffffff;
+  border: 1px solid #1a1918;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.contact-page button:hover {
+  background-color: #a08052;
+  border-color: #a08052;
+}

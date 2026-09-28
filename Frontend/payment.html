@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Starlight</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+
+    <script src="js/jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+
+    <!-- Checkout -->
+
+    <main class="payment-page">
+
+        <article>
+
+            <h1>Complete Your Order</h1>
+
+            <p>
+                Enter your details below to complete your purchase.
+            </p>
+
+
+            <div class="checkout-content">
+
+                <!-- Customer Details -->
+
+                <div class="customer-details">
+
+                    <section class="checkout-section">
+
+                        <h2>Contact Details</h2>
+
+                        <div class="form-group">
+
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" maxlength="10" required>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- Delivery Address -->
+
+                    <section class="checkout-section">
+
+                        <h2>Delivery Address</h2>
+
+                        <div class="form-group">
+
+                            <label for="address">Address</label>
+
+                            <textarea id="address" placeholder="House / Flat No., Building, Street" required></textarea>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="city">City</label>
+                                <input type="text" id="city" placeholder="City" required>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="state">State</label>
+                                <input type="text" id="state" placeholder="State" required>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" placeholder="Enter pincode" maxlength="6" required>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- Payment -->
+
+                <aside class="payment-box">
+
+                    <h2>Payment</h2>
+
+                    <div class="payment-options">
+
+                        <label>
+                            <input type="radio" name="paymentMethod" value="upi" checked>
+                            UPI
+                        </label>
+
+                        <label>
+                            <input type="radio" name="paymentMethod" value="card">
+                            Credit / Debit Card
+                        </label>
+
+                    </div>
+
+                    <button type="button" id="payBtn">
+                        Pay ₹ 0.00
+                    </button>
+
+                </aside>
+
+            </div>
+
+
+        </article>
+
+    </main>
+
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+
+    <!-- JavaScript -->
+    <script src="js/fetchNavAndFooter.js"></script>
+    <script src="js/payment.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders & Billing | Starlight Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <div class="admin-layout">
+
+        <!-- Left Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <a href="admin_Dashboard.html" class="admin-brand">
+                        STARLIGHT <span>✦ ADMIN</span>
+                    </a>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link sidebar-storefront-link" title="Open Storefront">
+                        Storefront
+                    </a>
+
+                    <div class="sidebar-nav-divider"></div>
+
+                    <a href="admin_Dashboard.html" class="sidebar-link">Dashboard</a>
+                    <a href="admin_ProductPage.html" class="sidebar-link">Products</a>
+                    <a href="admin_UsersPage.html" class="sidebar-link">Users</a>
+                    <a href="admin_OrdersPage.html" class="sidebar-link active">Orders</a>
+                </nav>
+            </div>
+
+            <!-- Sidebar Bottom: User Profile & Logout -->
+            <div class="sidebar-footer">
+                <div class="sidebar-user-box">
+                    <div class="user-profile-row">
+                        <div class="user-avatar">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <span class="user-email-text" id="adminEmail">Loading...</span>
+                            <span class="user-badge">✦ Administrator</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="sidebar-logout-btn" title="Sign out of Admin Portal" onclick="logoutUser()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Main Viewport -->
+        <main class="admin-main">
+
+            <!-- Page Title Area -->
+            <div class="admin-title-area">
+                <h1>Orders & Invoices</h1>
+                <p>Query and review customer invoices, purchased products, and totals.</p>
+            </div>
+
+            <!-- 1. Search Panel -->
+            <section class="admin-card selector-card">
+                <div class="form-group" style="margin: 0;">
+                    <label for="orderSearchInput">Search Orders</label>
+                    <div class="product-search">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="orderSearchInput" class="admin-input search-input"
+                            placeholder="Search by Order ID, customer name, or email..." autocomplete="off">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Orders Table -->
+            <section class="admin-card form-card">
+                <div class="card-header">
+                    <h2>Orders Directory</h2>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 12%;">Order ID</th>
+                                <th style="width: 32%;">Customer</th>
+                                <th style="width: 20%;">Date</th>
+                                <th style="width: 20%;">Total Amount</th>
+                                <th style="width: 16%; text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- 3. Order Details & Invoice Modal -->
+    <div id="orderModalOverlay" class="admin-modal-overlay">
+        <div class="admin-modal-card order-modal-card">
+
+            <div class="card-header">
+                <div>
+                    <h2 id="modalOrderTitle">Order #---</h2>
+                    <span class="order-modal-date" id="modalOrderDate">---</span>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseOrderModal" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Customer Summary Strip -->
+            <div class="order-client-strip">
+                <div class="client-meta-box">
+                    <span class="meta-label">Customer Name</span>
+                    <strong class="meta-value" id="modalCustomerName">---</strong>
+                </div>
+                <div class="client-meta-box">
+                    <span class="meta-label">Email Address</span>
+                    <strong class="meta-value" id="modalCustomerEmail">---</strong>
+                </div>
+                <div class="client-meta-box">
+                    <span class="meta-label">Payment Status</span>
+                    <strong class="meta-value" id="modalPaymentStatus">Paid</strong>
+                </div>
+            </div>
+
+            <!-- Ordered Line Items Table -->
+            <div class="order-items-wrapper">
+                <table class="admin-table order-items-table">
+                    <thead>
+                        <tr>
+                            <th>Jewellery</th>
+                            <th style="text-align: center; width: 16%;">Unit Price</th>
+                            <th style="text-align: center; width: 12%;">Qty</th>
+                            <th style="text-align: right; width: 22%;">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalOrderItemsBody"></tbody>
+                </table>
+            </div>
+
+            <!-- Total Bar -->
+            <div class="order-footer-bar" style="justify-content: flex-end;">
+                <div class="order-total-summary">
+                    <span class="total-label">Grand Total:</span>
+                    <span class="total-amount" id="modalGrandTotal">₹ 0.00</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/admin_Dashboard.js"></script>
+    <script src="js/admin_OrdersPage.js"></script>
+
+</body>
+
+</html>

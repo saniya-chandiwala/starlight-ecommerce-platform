@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Bag</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+
+    <script src="js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+
+
+    <!-- Cart -->
+    <main class="cart-page">
+
+        <header id="cartHeader">
+            <h1>Shopping Bag</h1>
+        </header>
+
+
+        <div id="cartLayout">
+
+            <!-- Cart Items -->
+            <section id="cartItemsContainer"></section>
+
+
+            <!-- Order Summary -->
+            <aside id="cartSummary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-line">
+                    <span>Total</span>
+                    <span id="summarySubtotal">₹ 0</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+
+                <div class="summary-line total-line">
+                    <span>Estimated Total</span>
+                    <span id="summaryTotal">₹ 0</span>
+                </div>
+
+                <button type="button" id="checkoutButton" onclick="window.location.href = 'payment.html'">
+                    Proceed to Checkout
+                </button>
+
+            </aside>
+
+        </div>
+
+
+        <!-- Empty Cart -->
+        <section id="emptyCart">
+
+            <p>Your shopping bag is currently empty.</p>
+
+            <a href="index.html">
+                Continue Shopping &rarr;
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+
+    <!-- JavaScript -->
+    <script src="js/fetchNavAndFooter.js"></script>
+    <script src="js/cart.js"></script>
+
+</body>
+
+</html>

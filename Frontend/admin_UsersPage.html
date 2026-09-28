@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Accounts | Starlight Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <div class="admin-layout">
+
+        <!-- Left Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <a href="admin_Dashboard.html" class="admin-brand">
+                        STARLIGHT <span>✦ ADMIN</span>
+                    </a>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link sidebar-storefront-link" title="Open Storefront">
+                        Storefront
+                    </a>
+
+                    <div class="sidebar-nav-divider"></div>
+
+                    <!-- Set 'active' on the current page -->
+                    <a href="admin_Dashboard.html" class="sidebar-link">Dashboard</a>
+                    <a href="admin_ProductPage.html" class="sidebar-link">Products</a>
+                    <a href="admin_UsersPage.html" class="sidebar-link " active>Users</a>
+                    <a href="admin_OrdersPage.html" class="sidebar-link">Orders</a>
+                </nav>
+            </div>
+
+            <!-- Sidebar Bottom: User Profile & Logout -->
+            <div class="sidebar-footer">
+                <div class="sidebar-user-box">
+                    <div class="user-profile-row">
+                        <div class="user-avatar">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <span class="user-email-text" id="adminEmail">Loading...</span>
+                            <span class="user-badge">✦ Administrator</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="sidebar-logout-btn" title="Sign out of Admin Portal" onclick="logoutUser()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Main Viewport -->
+        <main class="admin-main">
+
+            <!-- Page Title -->
+            <div class="admin-title-area">
+                <h1>User Accounts</h1>
+                <p>Query admin and customer records, verify credentials, and manage roles.</p>
+            </div>
+
+            <!-- 1. Targeted Filter & Lookup Panel -->
+            <section class="admin-card selector-card">
+                <div class="selector-grid">
+
+                    <!-- Role Filter -->
+                    <div class="form-group">
+                        <label for="selectUserRole">1. Select User Type</label>
+                        <select id="selectUserRole" class="admin-select">
+                            <option value="" disabled selected hidden>Choose User Type</option>
+                            <option value="All">All Users</option>
+                            <option value="Admin">Admins</option>
+                            <option value="Customer">Customers</option>
+                        </select>
+                    </div>
+
+                    <!-- User Search -->
+                    <div class="form-group">
+                        <label for="userSearchInput">2. Select User</label>
+
+                        <div class="product-search">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
+                            <input type="text" id="userSearchInput" class="admin-input search-input"
+                                placeholder="Select a user type first..." autocomplete="off" disabled>
+
+                            <div id="userDropdown" class="product-dropdown"></div>
+                        </div>
+                    </div>
+
+                    <!-- Add New User -->
+                    <div class="selector-action">
+                        <label>&nbsp;</label>
+
+                        <button type="button" id="btnNewUser" class="admin-btn btn-secondary">
+                            <i class="fa-solid fa-user-plus"></i> New User
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 2. Fetched Users Table -->
+            <section class="admin-card form-card">
+                <div class="card-header">
+                    <h2>Accounts Directory</h2>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 6%;">ID</th>
+                                <th style="width: 20%;">Full Name</th>
+                                <th style="width: 26%;">Email Address</th>
+                                <th style="width: 16%;">Password</th>
+                                <th style="width: 14%;">Role</th>
+                                <th style="width: 18%; text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- 3. User CRUD Form Popup / Modal -->
+    <div id="userModalOverlay" class="admin-modal-overlay">
+        <div class="admin-modal-card">
+
+            <div class="card-header">
+                <h2 id="modalTitle">User Credentials & Details</h2>
+                <button type="button" class="modal-close-btn" id="btnCloseModal" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="userCrudForm" autocomplete="off">
+                <div class="form-fields">
+
+                    <!-- Hidden User ID -->
+                    <input type="hidden" id="userId" value="">
+
+                    <!-- Full Name -->
+                    <div class="form-group full-width">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" class="admin-input" placeholder="e.g. Saniya Chandiwala">
+                    </div>
+
+                    <!-- Email, Password & Role -->
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="userEmail">Email Address</label>
+                            <input type="email" id="userEmail" class="admin-input" placeholder="user@gmail.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userPassword">Password</label>
+                            <input type="text" id="userPassword" class="admin-input" placeholder="Enter password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userRole">Account Role</label>
+                            <select id="userRole" class="admin-select">
+                                <option value="Admin">Admin</option>
+                                <option value="Customer" selected>Customer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Action Button Toolbar -->
+                <div class="form-actions">
+                    <button type="button" id="btnSaveUser" class="admin-btn btn-primary">
+                        <i class="fa-solid fa-check"></i> Save New
+                    </button>
+
+                    <button type="button" id="btnUpdateUser" class="admin-btn btn-accent" disabled>
+                        <i class="fa-solid fa-pen-to-square"></i> Update User
+                    </button>
+
+                    <button type="button" id="btnDeleteUser" class="admin-btn btn-danger" disabled>
+                        <i class="fa-solid fa-trash-can"></i> Delete User
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/admin_Dashboard.js"></script>
+    <script src="js/admin_UsersPage.js"></script>
+
+</body>
+
+</html>
